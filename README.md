@@ -29,4 +29,6 @@ details:
 
 claude --model qwen3-coder
 
+## if you really want to try yolo mode, go nuts
 
+claude --dangerously-skip-permissions --model qwen3-coder
