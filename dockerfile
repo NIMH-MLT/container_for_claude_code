@@ -46,7 +46,14 @@ USER claude
 # install claude Code
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
+# prevent Claude Code from clearing the KV cache 
+RUN echo "{\"env\": {\"CLAUDE_CODE_ATTRIBUTION_HEADER\": \"0\"}}" >> /home/claude/.claude/settings.json
+# and also in an environment variable for good measure
+ENV CLAUDE_CODE_ATTRIBUTION_HEADER=0
+
+# set other environment variables
 ENV PATH="$PATH:/home/claude/.local/bin"
 ENV HOME="/home/claude"
+
 
 WORKDIR /workspace
